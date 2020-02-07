@@ -19,7 +19,13 @@ routes.get('/getcar/:id', async (req, res) => {
 
     try {
         const car = await db.getCar(id);
-        res.json(car);
+
+        if(await searchID(id)) {
+            res.json(car);
+        } else {
+            res.json({"info" : `Could not fetch car with id: ${ id }`});
+        }
+        
     } catch (error) {
         res.json(error);
     }
@@ -42,10 +48,14 @@ routes.delete('/deletecar/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
-        const deleteCar = await db.deleteCar(id);
-        res.json({"info" : "Delete successfully"});
+        if(await searchID(id)) {
+            const deleteCar = await db.deleteCar(id);
+            res.json({"info" : "Delete successfully"});
+        } else {
+            res.json({"info" : `Could not find car with id: ${ id }`});
+        }
     } catch (error) {
-        
+        res.json(error);
     }
 });
 
@@ -62,5 +72,14 @@ routes.put('/updatecar/:id', async (req, res) => {
         res.json(error);
     }
 });
+
+const searchID = async (id) => {
+    const searchID = await db.getCar(id);
+    if(searchID.length !== 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 module.exports = routes;
