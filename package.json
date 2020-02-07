@@ -1,0 +1,25 @@
+{
+  "name": "car_crud",
+  "version": "1.0.0",
+  "description": "ik1005 laboration backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johhan85/car_crud.git"
+  },
+  "author": "johhan85",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johhan85/car_crud/issues"
+  },
+  "homepage": "https://github.com/Johhan85/car_crud#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "sqlite": "^3.0.3"
+  }
+}
