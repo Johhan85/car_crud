@@ -66,8 +66,13 @@ routes.put('/updatecar/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
-        const updateCar = await db.updateCar(regnr, brand, model, id);
-        res.json({"info" : "Update successfully"});
+        if(await searchID(id)) {
+            const updateCar = await db.updateCar(regnr, brand, model, id);
+            res.json({"info" : "Update successfully"});
+        } else {
+            res.json({"info" : `Could not find car with id: ${ id }`});
+        }
+        
     } catch (error) {
         res.json(error);
     }
