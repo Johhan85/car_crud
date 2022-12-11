@@ -18,7 +18,7 @@
   "homepage": "https://github.com/Johhan85/car_crud#readme",
   "dependencies": {
     "bluebird": "^3.7.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodemon": "^2.0.2",
     "sqlite": "^3.0.3"
   }
